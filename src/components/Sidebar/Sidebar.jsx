@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import './Sidebar.css'
 import {assets} from '../../assets/assets'
 import { Context } from '../../Context/Context.jsx';
+import ThemeBtn from '../ThemeBtn.jsx';
 
 const Sidebar = () => {
 
@@ -14,12 +15,17 @@ const Sidebar = () => {
     }
 
   return (
-    <div className='sidebar'>
+    <div className='sidebar dark:bg-gray-800 dark:border-gray-700'>
         
         <div className="top">
             
-            <img onClick={() => setExtended(prev => !prev)} src={assets.menu_icon} alt="" className="menu" />
-            
+            {/* <img onClick={() => setExtended(prev => !prev)} src={assets.menu_icon} alt="" className="menu" /> */}
+            <div class="space-y-1" onClick={() => setExtended(prev => !prev)}>
+                <div class="bg-gray-700 w-6 h-1 rounded-full shadow-lg dark:bg-white"></div>
+                <div class="bg-gray-700 w-6 h-1 rounded-full shadow-lg dark:bg-white"></div>
+                <div class="bg-gray-700 w-6 h-1 rounded-full shadow-lg dark:bg-white"></div>
+            </div>
+
             <div onClick ={() => newChat()} className="new-chat">
                 <img src={assets.plus_icon} alt="" />
                 {extended ? <p>New Chat</p> : null}
@@ -27,7 +33,7 @@ const Sidebar = () => {
             
             {extended
                 ? <div className="recent">
-                    <p className="recent-title">Recent</p>
+                    <p className="recent-title dark:text-white">Recent</p>
                     {prevPrompts.map((item , index) => {
                         return (
                             <div onClick={() => loadPrompt(item)} className="recent-entry">
@@ -43,17 +49,21 @@ const Sidebar = () => {
         </div>
 
         <div className="bottom">
-            <div className="bottom-item recent-entry">
+            <div className="bottom-item recent-entry dark:hover:bg-gray-700">
                 <img src={assets.question_icon} alt="" />
-                {extended ? <p>Help</p> : null}
+                {extended ? <p className='dark:text-white dark:hover:text-gray-900'>Help</p> : null}
             </div>
             <div className="bottom-item recent-entry">
                 <img src={assets.history_icon} alt="" />
-                {extended ? <p>Activity</p> : null}
+                {extended ? <p className='dark:text-white dark:hover:text-gray-900'>Activity</p> : null}
             </div>
             <div className="bottom-item recent-entry">
                 <img src={assets.setting_icon} alt="" />
-                {extended ? <p>Setting</p> : null}
+                {extended ? <p className='dark:text-white dark:hover:text-gray-900'>Setting</p> : null}
+            </div>
+            <div className="bottom-item recent-entry">
+                <img src={assets.dark_Theme} alt="" />
+                {extended ? <ThemeBtn /> : null}
             </div>
 
         </div>
