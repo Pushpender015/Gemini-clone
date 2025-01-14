@@ -48,7 +48,7 @@ function Main() {
               : <div className='result'>
                     <div className="result-title">
                       <img src={assets.user_icon} alt="" />
-                      <p>{recentPrompt}</p>
+                      <p className='dark:text-white text-xl'>{recentPrompt}</p>
                     </div>
                     <div className="result-data">
                       <img src={assets.gemini_icon} alt="" />
@@ -58,7 +58,7 @@ function Main() {
                           <hr />
                           <hr />
                         </div>
-                      : <p dangerouslySetInnerHTML={{__html:resultData}}></p>
+                      : <p className='dark:text-white' dangerouslySetInnerHTML={{__html:resultData}}></p>
                       }
                     </div>
                 </div>
